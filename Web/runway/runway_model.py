@@ -23,15 +23,13 @@ img = (255 - img) / 255
 
 # predict
 pred = model.predict(np.expand_dims(img, axis=0))[0]
-ind = (-pred).argsort()[:5] # ind is index of classname
+ind = (-pred).argsort()[:5] # ind is index of classname 5
+# ind = (-pred).argsort()[:10] # ind is index of classname 10
 latex = [class_names[x] for x in ind] # latex is top 10 classname
 print(ind[0]) # ind[0] is the highest index of classname
-print(latex) # 
-# pred = model.predict(np.expand_dims(img, axis=0))[0]
-# ind = (-pred).argsort()[:10] # ind is index of classname
-# latex = [class_names[x] for x in ind] # latex is top 10 classname
-# print(ind[0]) # ind[0] is the highest index of classname
-# print(latex) # 10개 출력됨. 
+print(latex) # 5개 출력됨.
+
+
 print('-----------')
 
 # 정확도
@@ -39,5 +37,4 @@ for x in range(0,len(ind)):
   print('rank ' + str(x+1) + ': ' + latex[x])
   print('accuarcy: ' + str(round(pred[ind[x]]*100, 2)) + '%')
 
-# 5개의 class_name와 유사도 return 
 
