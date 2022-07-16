@@ -21,25 +21,44 @@ with open("./runway/class_names.txt", "r") as ins:
 model = keras.models.load_model('./runway/doodleNet-model.h5')
 model.summary()
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/AI", methods=['GET', 'POST'])
 def index():
     # if request.method =='GET':
     #     return render_template('index.html')
     if request.method =='GET':
-
+        parameter_dict = request.args.to_dict()
+        if len(parameter_dict) == 0:
+            return 'No parameter'
+        #랜덤 단어와 이미지 url을 받아온다.
+        ranword=''
+        for key in parameter_dict.keys():
+            ranword += request.args[key]
         # open a local image
         #img = cv2.imread('apple.png')
-        img = cv2.imread('runway/apple2.png')
+        img = cv2.imread('runway/small1x.png')
         img = cv2.resize(img, (28, 28))
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img = img.reshape((28, 28, 1))
         img = (255 - img) / 255
         # predict
         pred = model.predict(np.expand_dims(img, axis=0))[0]
-        ind = (-pred).argsort()[:5] # ind is index of classname 5
+        ind = (-pred).argsort()[0:] # ind is index of classname 5
         latex = [class_names[x] for x in ind] # latex is top 10 classname
-        print(latex) # 5개 출력됨.
-        return render_template('index.html',names=latex)
+
+        otherResults={}
+        result={}
+        for x in range(0,len(ind)):
+            if(latex[x]==ranword):
+                result[ latex[x] ] = str(round(pred[ind[x]]*100, 2))+'%'
+                print('random의 해당 단어는'+latex[x]+'유사도는'+str(round(pred[ind[x]]*100, 2)) + '%')
+            if(x<5):
+                otherResults[ latex[x] ] = str(round(pred[ind[x]]*100, 2)) + '%'
+            #print('rank ' + sctr(x+1) + ': ' + latex[x])
+            #print('accuarcy: ' + str(round(pred[ind[x]]*100, 2)) + '%')
+
+        print(otherResults)
+        
+        return render_template('index.html',otherResults=otherResults, result=result)
 
 if __name__ =='__main__':
     app.run(port=5000, debug=True)
