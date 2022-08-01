@@ -1,0 +1,99 @@
+airplane
+alarm clock
+apple
+axe
+banana
+baseball
+bathtub
+bench
+bicycle
+birthday cake
+book
+boomerang
+bridge
+bucket
+butterfly
+cactus
+candle
+canoe
+car
+cell phone
+chair
+church
+couch
+crown
+cup
+diamond
+donut
+door
+dresser
+drill
+dumbbell
+eyeglasses
+fish
+flashlight
+floor lamp
+flower
+fork
+frying pan
+golf_club
+hamburger
+hammer
+hat
+headphones
+hexagon
+hot air balloon
+hourglass
+house
+ice cream
+kangaroo
+key
+knife
+leaf
+light bulb
+mailbox
+megaphone
+mountain
+mushroom
+paint can
+pants
+paper clip
+peanut
+pear
+pencil
+picture frame
+pillow
+rainbow
+rollerskates
+sailboat
+saw
+see saw
+sheep
+shoe
+skateboard
+snake
+snowflake
+snowman
+sock
+spoon
+square
+star
+stethoscope
+suitcase
+swing set
+sword
+t-shirt
+table
+teapot
+television
+tent
+tooth
+traffic light
+tree
+triangle
+umbrella
+vase
+washing machine
+wheel
+wine bottle
+wine glass
