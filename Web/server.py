@@ -57,9 +57,9 @@ def index():
             #print('accuarcy: ' + str(round(pred[ind[x]]*100, 2)) + '%')
 
         print(otherResults)
+        print(result)
         
         return render_template('index.html',otherResults=otherResults, result=result)
 
 if __name__ =='__main__':
     app.run(port=5000, debug=True)
-#print('test')
